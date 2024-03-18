@@ -1,21 +1,9 @@
-/****************************************************************************
- ****************************************************************************
- ***
- ***   This header was automatically generated from a Linux kernel header
- ***   of the same name, to make information necessary for userspace to
- ***   call into the kernel available to libc.  It contains only constants,
- ***   structures, and macros generated from the original header, and thus,
- ***   contains no copyrightable information.
- ***
- ***   To edit the content of this header, modify the corresponding
- ***   source file (e.g. under external/kernel-headers/original/) then
- ***   run bionic/libc/kernel/tools/update_all.py
- ***
- ***   Any manual change here will be lost the next time this script will
- ***   be run. You've been warned!
- ***
- ****************************************************************************
- ****************************************************************************/
+/*
+ * This file is auto-generated. Modifications will be lost.
+ *
+ * See https://android.googlesource.com/platform/bionic/+/master/libc/kernel/
+ * for more information.
+ */
 #ifndef _UAPI_I915_DRM_H_
 #define _UAPI_I915_DRM_H_
 #include "drm.h"
@@ -58,10 +46,10 @@ enum drm_i915_pmu_engine_sample {
 #define I915_PMU_SAMPLE_MASK (0xf)
 #define I915_PMU_SAMPLE_INSTANCE_BITS (8)
 #define I915_PMU_CLASS_SHIFT (I915_PMU_SAMPLE_BITS + I915_PMU_SAMPLE_INSTANCE_BITS)
-#define __I915_PMU_ENGINE(class,instance,sample) ((class) << I915_PMU_CLASS_SHIFT | (instance) << I915_PMU_SAMPLE_BITS | (sample))
-#define I915_PMU_ENGINE_BUSY(class,instance) __I915_PMU_ENGINE(class, instance, I915_SAMPLE_BUSY)
-#define I915_PMU_ENGINE_WAIT(class,instance) __I915_PMU_ENGINE(class, instance, I915_SAMPLE_WAIT)
-#define I915_PMU_ENGINE_SEMA(class,instance) __I915_PMU_ENGINE(class, instance, I915_SAMPLE_SEMA)
+#define __I915_PMU_ENGINE(__linux_class,instance,sample) ((__linux_class) << I915_PMU_CLASS_SHIFT | (instance) << I915_PMU_SAMPLE_BITS | (sample))
+#define I915_PMU_ENGINE_BUSY(__linux_class,instance) __I915_PMU_ENGINE(__linux_class, instance, I915_SAMPLE_BUSY)
+#define I915_PMU_ENGINE_WAIT(__linux_class,instance) __I915_PMU_ENGINE(__linux_class, instance, I915_SAMPLE_WAIT)
+#define I915_PMU_ENGINE_SEMA(__linux_class,instance) __I915_PMU_ENGINE(__linux_class, instance, I915_SAMPLE_SEMA)
 #define __I915_PMU_OTHER(x) (__I915_PMU_ENGINE(0xff, 0xff, 0xf) + 1 + (x))
 #define I915_PMU_ACTUAL_FREQUENCY __I915_PMU_OTHER(0)
 #define I915_PMU_REQUESTED_FREQUENCY __I915_PMU_OTHER(1)
