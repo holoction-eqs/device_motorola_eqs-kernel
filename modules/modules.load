@@ -95,7 +95,6 @@ zram
 hdcp
 qseecom-mod
 qcom-i2c-pmic
-nfc_i2c
 sg
 spi-msm-geni
 spmi-pmic-arb-debug
@@ -233,6 +232,7 @@ swr_dmic_dlkm
 wcd9xxx_dlkm
 swr_haptics_dlkm
 stub_dlkm
+wsa881x_dlkm
 machine_dlkm
 lpass_cdc_wsa2_macro_dlkm
 lpass_cdc_wsa_macro_dlkm
@@ -241,6 +241,7 @@ lpass_cdc_rx_macro_dlkm
 lpass_cdc_tx_macro_dlkm
 lpass_cdc_dlkm
 wsa883x_dlkm
+fs19xx_dlkm
 wcd938x_dlkm
 wcd938x_slave_dlkm
 wcd937x_dlkm

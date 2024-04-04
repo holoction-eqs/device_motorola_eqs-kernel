@@ -989,6 +989,10 @@ alias pci:v000017CBd00001107sv*sd*bc*sc*i* cnss2
 alias pci:v000017CBd0000110Asv*sd*bc*sc*i* cnss2
 alias of:N*T*Cqcom,ipcc qcom_ipcc
 alias of:N*T*Cqcom,ipccC* qcom_ipcc
+alias foursemi:fs16xx fs19xx_dlkm
+alias of:N*T*Cfoursemi,fs16xx fs19xx_dlkm
+alias of:N*T*Cfoursemi,fs16xxC* fs19xx_dlkm
+alias i2c:fs16xx fs19xx_dlkm
 alias pwm:pwm-lpg pwm_qti_lpg
 alias of:N*T*Cqcom,sharedmem-uio msm_sharedmem
 alias of:N*T*Cqcom,sharedmem-uioC* msm_sharedmem
