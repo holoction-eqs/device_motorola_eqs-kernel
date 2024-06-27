@@ -1,1 +1,1 @@
-cmd_usr/include/display/media/msm_sde_rotator.h := sh ../scripts/headers_install.sh ../techpack/display/include/uapi/display/media/msm_sde_rotator.h usr/include/display/media/msm_sde_rotator.h
+cmd_usr/include/display/media/msm_sde_rotator.h := sh /home/sfire/roms/los/kernel/motorola/sm8475/scripts/headers_install.sh /home/sfire/roms/los/kernel/motorola/sm8475/../sm8475-modules/qcom/opensource/display-drivers/include/uapi/display/media/msm_sde_rotator.h usr/include/display/media/msm_sde_rotator.h

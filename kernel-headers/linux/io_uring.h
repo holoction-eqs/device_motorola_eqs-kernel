@@ -36,19 +36,21 @@ struct io_uring_sqe {
     __u32 statx_flags;
     __u32 fadvise_advice;
     __u32 splice_flags;
+    __u32 rename_flags;
+    __u32 unlink_flags;
+    __u32 hardlink_flags;
   };
   __u64 user_data;
   union {
-    struct {
-      union {
-        __u16 buf_index;
-        __u16 buf_group;
-      } __attribute__((packed));
-      __u16 personality;
-      __s32 splice_fd_in;
-    };
-    __u64 __pad2[3];
+    __u16 buf_index;
+    __u16 buf_group;
+  } __attribute__((packed));
+  __u16 personality;
+  union {
+    __s32 splice_fd_in;
+    __u32 file_index;
   };
+  __u64 __pad2[2];
 };
 enum {
   IOSQE_FIXED_FILE_BIT,
@@ -106,17 +108,30 @@ enum {
   IORING_OP_PROVIDE_BUFFERS,
   IORING_OP_REMOVE_BUFFERS,
   IORING_OP_TEE,
+  IORING_OP_SHUTDOWN,
+  IORING_OP_RENAMEAT,
+  IORING_OP_UNLINKAT,
   IORING_OP_LAST,
 };
 #define IORING_FSYNC_DATASYNC (1U << 0)
 #define IORING_TIMEOUT_ABS (1U << 0)
+#define IORING_TIMEOUT_UPDATE (1U << 1)
+#define IORING_TIMEOUT_BOOTTIME (1U << 2)
+#define IORING_TIMEOUT_REALTIME (1U << 3)
+#define IORING_LINK_TIMEOUT_UPDATE (1U << 4)
+#define IORING_TIMEOUT_CLOCK_MASK (IORING_TIMEOUT_BOOTTIME | IORING_TIMEOUT_REALTIME)
+#define IORING_TIMEOUT_UPDATE_MASK (IORING_TIMEOUT_UPDATE | IORING_LINK_TIMEOUT_UPDATE)
 #define SPLICE_F_FD_IN_FIXED (1U << 31)
+#define IORING_POLL_ADD_MULTI (1U << 0)
+#define IORING_POLL_UPDATE_EVENTS (1U << 1)
+#define IORING_POLL_UPDATE_USER_DATA (1U << 2)
 struct io_uring_cqe {
   __u64 user_data;
   __s32 res;
   __u32 flags;
 };
 #define IORING_CQE_F_BUFFER (1U << 0)
+#define IORING_CQE_F_MORE (1U << 1)
 enum {
   IORING_CQE_BUFFER_SHIFT = 16,
 };
@@ -151,6 +166,7 @@ struct io_cqring_offsets {
 #define IORING_ENTER_GETEVENTS (1U << 0)
 #define IORING_ENTER_SQ_WAKEUP (1U << 1)
 #define IORING_ENTER_SQ_WAIT (1U << 2)
+#define IORING_ENTER_EXT_ARG (1U << 3)
 struct io_uring_params {
   __u32 sq_entries;
   __u32 cq_entries;
@@ -170,6 +186,10 @@ struct io_uring_params {
 #define IORING_FEAT_CUR_PERSONALITY (1U << 4)
 #define IORING_FEAT_FAST_POLL (1U << 5)
 #define IORING_FEAT_POLL_32BITS (1U << 6)
+#define IORING_FEAT_SQPOLL_NONFIXED (1U << 7)
+#define IORING_FEAT_EXT_ARG (1U << 8)
+#define IORING_FEAT_NATIVE_WORKERS (1U << 9)
+#define IORING_FEAT_RSRC_TAGS (1U << 10)
 enum {
   IORING_REGISTER_BUFFERS = 0,
   IORING_UNREGISTER_BUFFERS = 1,
@@ -184,13 +204,45 @@ enum {
   IORING_UNREGISTER_PERSONALITY = 10,
   IORING_REGISTER_RESTRICTIONS = 11,
   IORING_REGISTER_ENABLE_RINGS = 12,
+  IORING_REGISTER_FILES2 = 13,
+  IORING_REGISTER_FILES_UPDATE2 = 14,
+  IORING_REGISTER_BUFFERS2 = 15,
+  IORING_REGISTER_BUFFERS_UPDATE = 16,
+  IORING_REGISTER_IOWQ_AFF = 17,
+  IORING_UNREGISTER_IOWQ_AFF = 18,
+  IORING_REGISTER_IOWQ_MAX_WORKERS = 19,
   IORING_REGISTER_LAST
+};
+enum {
+  IO_WQ_BOUND,
+  IO_WQ_UNBOUND,
 };
 struct io_uring_files_update {
   __u32 offset;
   __u32 resv;
   __aligned_u64 fds;
 };
+struct io_uring_rsrc_register {
+  __u32 nr;
+  __u32 resv;
+  __u64 resv2;
+  __aligned_u64 data;
+  __aligned_u64 tags;
+};
+struct io_uring_rsrc_update {
+  __u32 offset;
+  __u32 resv;
+  __aligned_u64 data;
+};
+struct io_uring_rsrc_update2 {
+  __u32 offset;
+  __u32 resv;
+  __aligned_u64 data;
+  __aligned_u64 tags;
+  __u32 nr;
+  __u32 resv2;
+};
+#define IORING_REGISTER_FILES_SKIP (- 2)
 #define IO_URING_OP_SUPPORTED (1U << 0)
 struct io_uring_probe_op {
   __u8 op;
@@ -221,5 +273,11 @@ enum {
   IORING_RESTRICTION_SQE_FLAGS_ALLOWED = 2,
   IORING_RESTRICTION_SQE_FLAGS_REQUIRED = 3,
   IORING_RESTRICTION_LAST
+};
+struct io_uring_getevents_arg {
+  __u64 sigmask;
+  __u32 sigmask_sz;
+  __u32 pad;
+  __u64 ts;
 };
 #endif

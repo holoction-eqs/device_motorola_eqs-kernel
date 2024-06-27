@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
 /*
- * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
  * Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
  */
 
@@ -396,7 +396,7 @@ struct sde_drm_scaler_v2 {
 };
 
 /* Number of dest scalers supported */
-#define SDE_MAX_DS_COUNT 2
+#define SDE_MAX_DS_COUNT 4
 
 /*
  * Destination scaler flag config
@@ -870,6 +870,27 @@ struct drm_msm_noise_layer_cfg {
 			DRM_MSM_POWER_CTRL), struct drm_msm_power_ctrl)
 #define DRM_IOCTL_MSM_DISPLAY_HINT DRM_IOW((DRM_COMMAND_BASE + \
 			DRM_MSM_DISPLAY_HINT), struct drm_msm_display_hint)
+
+/* panel feature */
+typedef enum {
+	PARAM_HBM = 0,
+	PARAM_CABC,
+	PARAM_ACL,
+	PARAM_DC,
+	POWER_MODE_MAX_NUM,
+	PARAM_COLOR = POWER_MODE_MAX_NUM,
+	PARAM_MAX_NUM
+} paramId_t;
+
+struct panel_param_info {
+	paramId_t param_idx;
+	__u32 value;
+};
+
+#define DRM_SET_PANEL_FEATURE	(DRM_COMMAND_END -1)
+#define DRM_IOCTL_SET_PANEL_FEATURE          DRM_IOWR(DRM_SET_PANEL_FEATURE, struct panel_param_info)
+#define DRM_GET_PANEL_FEATURE	(DRM_COMMAND_END-2)
+#define DRM_IOCTL_GET_PANEL_FEATURE          DRM_IOWR(DRM_GET_PANEL_FEATURE, struct panel_param_info)
 
 #if defined(__cplusplus)
 }

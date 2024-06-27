@@ -1,1 +1,1 @@
-cmd_usr/include/audio/sound/audio_compressed_formats.h := sh ../scripts/headers_install.sh ../techpack/audio/include/uapi/audio/sound/audio_compressed_formats.h usr/include/audio/sound/audio_compressed_formats.h
+cmd_usr/include/audio/sound/audio_compressed_formats.h := sh /home/sfire/roms/los/kernel/motorola/sm8475/scripts/headers_install.sh /home/sfire/roms/los/kernel/motorola/sm8475/../sm8475-modules/qcom/opensource/audio-kernel/include/uapi/audio/sound/audio_compressed_formats.h usr/include/audio/sound/audio_compressed_formats.h

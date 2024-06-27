@@ -25,6 +25,7 @@
 #define EPOLLWRBAND ( __poll_t) 0x00000200
 #define EPOLLMSG ( __poll_t) 0x00000400
 #define EPOLLRDHUP ( __poll_t) 0x00002000
+#define EPOLL_URING_WAKE (( __poll_t) (1U << 27))
 #define EPOLLEXCLUSIVE (( __poll_t) (1U << 28))
 #define EPOLLWAKEUP (( __poll_t) (1U << 29))
 #define EPOLLONESHOT (( __poll_t) (1U << 30))

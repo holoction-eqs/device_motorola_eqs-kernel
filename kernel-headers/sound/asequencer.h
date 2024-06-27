@@ -200,10 +200,10 @@ typedef int __bitwise snd_seq_client_type_t;
 #define NO_CLIENT (( snd_seq_client_type_t) 0)
 #define USER_CLIENT (( snd_seq_client_type_t) 1)
 #define KERNEL_CLIENT (( snd_seq_client_type_t) 2)
-#define SNDRV_SEQ_FILTER_BROADCAST (1 << 0)
-#define SNDRV_SEQ_FILTER_MULTICAST (1 << 1)
-#define SNDRV_SEQ_FILTER_BOUNCE (1 << 2)
-#define SNDRV_SEQ_FILTER_USE_EVENT (1 << 31)
+#define SNDRV_SEQ_FILTER_BROADCAST (1U << 0)
+#define SNDRV_SEQ_FILTER_MULTICAST (1U << 1)
+#define SNDRV_SEQ_FILTER_BOUNCE (1U << 2)
+#define SNDRV_SEQ_FILTER_USE_EVENT (1U << 31)
 struct snd_seq_client_info {
   int client;
   snd_seq_client_type_t type;

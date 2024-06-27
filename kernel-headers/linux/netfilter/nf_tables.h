@@ -94,6 +94,7 @@ enum nft_hook_attributes {
 enum nft_table_flags {
   NFT_TABLE_F_DORMANT = 0x1,
 };
+#define NFT_TABLE_F_MASK (NFT_TABLE_F_DORMANT)
 enum nft_table_attributes {
   NFTA_TABLE_UNSPEC,
   NFTA_TABLE_NAME,
@@ -394,6 +395,7 @@ enum nft_exthdr_op {
   NFT_EXTHDR_OP_IPV6,
   NFT_EXTHDR_OP_TCPOPT,
   NFT_EXTHDR_OP_IPV4,
+  NFT_EXTHDR_OP_SCTP,
   __NFT_EXTHDR_OP_MAX
 };
 #define NFT_EXTHDR_OP_MAX (__NFT_EXTHDR_OP_MAX - 1)

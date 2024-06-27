@@ -1,1 +1,1 @@
-cmd_usr/include/audio/linux/msm_audio_wma.h := sh ../scripts/headers_install.sh ../techpack/audio/include/uapi/audio/linux/msm_audio_wma.h usr/include/audio/linux/msm_audio_wma.h
+cmd_usr/include/audio/linux/msm_audio_wma.h := sh /home/sfire/roms/los/kernel/motorola/sm8475/scripts/headers_install.sh /home/sfire/roms/los/kernel/motorola/sm8475/../sm8475-modules/qcom/opensource/audio-kernel/include/uapi/audio/linux/msm_audio_wma.h usr/include/audio/linux/msm_audio_wma.h

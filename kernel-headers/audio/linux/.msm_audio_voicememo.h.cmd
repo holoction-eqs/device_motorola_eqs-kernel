@@ -1,1 +1,1 @@
-cmd_usr/include/audio/linux/msm_audio_voicememo.h := sh ../scripts/headers_install.sh ../techpack/audio/include/uapi/audio/linux/msm_audio_voicememo.h usr/include/audio/linux/msm_audio_voicememo.h
+cmd_usr/include/audio/linux/msm_audio_voicememo.h := sh /home/sfire/roms/los/kernel/motorola/sm8475/scripts/headers_install.sh /home/sfire/roms/los/kernel/motorola/sm8475/../sm8475-modules/qcom/opensource/audio-kernel/include/uapi/audio/linux/msm_audio_voicememo.h usr/include/audio/linux/msm_audio_voicememo.h

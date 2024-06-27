@@ -712,6 +712,11 @@
 #define PCI_PWR_CAP 12
 #define PCI_PWR_CAP_BUDGET(x) ((x) & 1)
 #define PCI_EXT_CAP_PWR_SIZEOF 16
+#define PCI_RCEC_RCIEP_BITMAP 4
+#define PCI_RCEC_BUSN 8
+#define PCI_RCEC_BUSN_REG_VER 0x02
+#define PCI_RCEC_BUSN_NEXT(x) (((x) >> 8) & 0xff)
+#define PCI_RCEC_BUSN_LAST(x) (((x) >> 16) & 0xff)
 #define PCI_VNDR_HEADER 4
 #define PCI_VNDR_HEADER_ID(x) ((x) & 0xffff)
 #define PCI_VNDR_HEADER_REV(x) (((x) >> 16) & 0xf)
