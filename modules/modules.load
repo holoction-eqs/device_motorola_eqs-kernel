@@ -10,6 +10,7 @@ mhi_dev_netdev
 mhi_dev_dtr
 phy-qcom-ufs-qmp-v4-lahaina
 phy-qcom-ufs-qmp-v4-parrot
+phy-qcom-ufs-qmp-v4-anarok
 phy-qcom-ufs-qmp-v3
 phy-qcom-ufs-qmp-14nm
 pinctrl-spmi-gpio
@@ -75,6 +76,7 @@ icnss2
 rimps_log
 plh_scmi
 gplaf_scmi
+shared_rail_scmi
 qdss_bridge
 memlat
 qcom_logbuf_vendor_hooks
@@ -158,6 +160,7 @@ leds-qti-tri-led
 leds-qpnp-vibrator-ldo
 plh_vendor
 gplaf_vendor
+shared_rail_vendor
 tz_log
 qce50
 qcedev-mod
@@ -212,7 +215,7 @@ snd-usb-audio-qmi
 qrtr-smd
 qrtr-mhi
 qrtr-gunyah
-wlan
+qca_cld3_qca6490
 q6_notifier_dlkm
 spf_core_dlkm
 audpkt_ion_dlkm
@@ -241,6 +244,7 @@ lpass_cdc_rx_macro_dlkm
 lpass_cdc_tx_macro_dlkm
 lpass_cdc_dlkm
 wsa883x_dlkm
+aw882xx_dlkm
 fs19xx_dlkm
 wcd938x_dlkm
 wcd938x_slave_dlkm
@@ -248,6 +252,7 @@ wcd937x_dlkm
 wcd937x_slave_dlkm
 hdmi_dlkm
 camera
+msm-cvp
 gsim
 ipam
 ipanetm
@@ -271,6 +276,7 @@ mmi_annotate
 mmi_info
 moto_f_usbnet
 bm_adsp_ulog
+watchdogtest
 mmi_charger
 moto_f_mass_storage
 rbs_fod_mmi
@@ -280,8 +286,12 @@ mmi_relay
 sensors_class
 sx937x_multi
 touchscreen_mmi
+stmicro_mmi
 goodix_brl_mmi
 qti_glink_charger
 wl2868c
 mmi_sys_temp
 qpnp_adaptive_charge
+moto_mm
+moto_swap
+gpio_keys
